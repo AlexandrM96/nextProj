@@ -1,7 +1,11 @@
-.rating-star {
-
+.ratingFill svg {
+fill: var(--primary)
 }
 
-.rating-fill {
+.ratingStar svg {
+margin-right: 5px;
+}
 
+.ratingEdit {
+    cursor: pointer;
 }
