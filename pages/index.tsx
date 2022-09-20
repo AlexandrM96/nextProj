@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Button, HTag, Paragraph, Rating, Tag} from "../components";
 import {withLayout} from "../layout/Layout";
-import {GetStaticProps, GetStaticPaths, GetServerSideProps} from 'next'
+import {GetStaticProps} from 'next'
 import axios from "axios";
 import {MenuItem} from "../interfaces/menu.interface";
 
@@ -37,26 +37,21 @@ function Home({menu}: HomeProps): JSX.Element {
             <Tag size={"div-medium"} color={"grey"}>Контент</Tag>
             <Tag size={"div-small"} color={"ghost"}>Контент</Tag>
             <Rating isEditable rating={rating} setRating={setRating}/>
-            <ul>
-                {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
-            </ul>
         </>
     )
 }
 
 export default withLayout(Home);
 
-// export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
-    const firstCatagory = 0;
-    const {data: menu} = await axios.post<MenuItem[]>('https://courses-top.ru/api/top-page/find', {
-        firstCatagory
+    const firstCategory = 0;
+    const {data: menu} = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
+        firstCategory
     });
-    console.log('121212112',menu);
     return {
         props: {
             menu,
-            firstCatagory
+            firstCategory
         }
     };
 };

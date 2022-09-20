@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import App from "next/app";
 import styles from './Rating.module.scss';
 
-export const Rating = ({isEditable = false, rating, setRating, ...props}: RatingProps): JSX.Element => {
+export const Rating = ({isEditable = false, rating, setRating, tabIndex, ...props}: RatingProps): JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {
@@ -27,17 +27,18 @@ export const Rating = ({isEditable = false, rating, setRating, ...props}: Rating
             setRating(i);
         }
 
-        const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
+        const updatedArray = ratingArray.map((item: JSX.Element, id: number) => {
             return (
                 <span
+                    key={id}
                     className={cn(styles.ratingStar, {
-                        [styles.ratingFill]: i < currentRating,
+                        [styles.ratingFill]: id < currentRating,
                         [styles.ratingEdit]: isEditable
                     })
                     }
-                    onMouseEnter={() => changeDisplay(i + 1)}
+                    onMouseEnter={() => changeDisplay(id + 1)}
                     onMouseLeave={() => changeDisplay(rating)}
-                    onClick={() => onClickEdit(i + 1)}
+                    onClick={() => onClickEdit(id + 1)}
                 >
 <svg
     tabIndex={isEditable ? 0 : -11}
@@ -52,7 +53,7 @@ export const Rating = ({isEditable = false, rating, setRating, ...props}: Rating
     };
     return (
         <div {...props}>
-            {ratingArray.map((r, i) => (<span key={i}>{r}</span>))}
+            {ratingArray.map((item, id: number) => (<span key={id}>{item}</span>))}
         </div>
     )
 }
