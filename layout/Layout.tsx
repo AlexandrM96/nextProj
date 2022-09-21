@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import {LayoutProps} from "./Layout.props";
 import {SideBar} from './SideBar/SideBar';
 import {Header} from './Header/Header';
