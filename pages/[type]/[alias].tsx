@@ -7,15 +7,18 @@ import {TopLevelCategory, TopPageModel} from "../../interfaces/page.interface";
 import {ParsedUrlQuery} from "querystring";
 import {ProductCharacteristic, ProductModel} from "../../interfaces/product.interface";
 import {firstLevelMenu} from "../../helpers/helpers";
+import {TopPageComponent} from "../../components/page-components";
 
 const firstCategory = 0;
 
 function TopPage({menu, page, products}: TopPageProps): JSX.Element {
 
     return (
-        <>
-            {products && products.length}
-        </>
+        <TopPageComponent
+            firstCategory={firstCategory}
+            page={page}
+            products={products}
+        />
     )
 }
 

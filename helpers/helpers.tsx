@@ -2,7 +2,7 @@ import {FirstLevelMenuItem} from "../interfaces/menu.interface";
 import {TopLevelCategory} from "../interfaces/page.interface";
 import React from "react";
 
- export const firstLevelMenu: FirstLevelMenuItem[] = [
+export const firstLevelMenu: FirstLevelMenuItem[] = [
 
     {
         route: 'courses',
@@ -62,3 +62,6 @@ import React from "react";
         </svg>
     }
 ]
+
+
+export const priceRu = (price: number): string => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ₽');

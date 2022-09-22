@@ -1,0 +1,87 @@
+.hhData {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+
+  .hhDataCountContent {
+    padding: 20px;
+    text-align: center;
+
+    .hhDataCountContentTitle {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    .hhDataCountContentCount {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 49px;
+      color: var(--primary);
+    }
+  }
+
+  .hhDataSalary {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    text-align: center;
+    gap: 20px 0;
+
+    .hhDataSalaryTitle {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    .hhDataSalaryCount {
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 35px;
+      text-align: center;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .hhDataSalaryRating {
+      display: grid;
+      grid-template-columns: repeat(3, 20px);
+      gap: 10px;
+      justify-content: center;
+
+      .hhDataSalaryRatingStar circle {
+        fill: var(--red);
+      }
+    }
+  }
+
+  .hhDataSalary > div {
+    border-right: 1px solid var(--grey-light);
+  }
+
+  .hhDataSalary > div:last-child {
+    border-right: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .hhData {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .hhDataSalary {
+    grid-template-columns: 1fr;
+  }
+  .hhDataSalary > div {
+    border-right: none;
+    border-bottom: 1px solid var(--grey-light);
+    padding-bottom: 20px;
+  }
+  .hhDataSalary > div:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+}
