@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {Button, HTag, Input, Paragraph, Rating, Tag, TextAria} from "../components";
-import {withLayout} from "../layout/Layout";
+import {Button, HTag, Input, Paragraph, Rating, Tag, TextAria} from "../../components";
+import {withLayout} from '../../layout/Layout';
 import {GetStaticProps} from 'next'
 import axios from "axios";
-import {MenuItem} from "../interfaces/menu.interface";
+import {MenuItem} from "../../interfaces/menu.interface";
 
-function Home({menu}: HomeProps): JSX.Element {
+function Search({menu}: HomeProps): JSX.Element {
 
     const [rating, setRating] = useState<number>(2);
 
@@ -43,7 +43,7 @@ function Home({menu}: HomeProps): JSX.Element {
     )
 }
 
-export default withLayout(Home);
+export default withLayout(Search);
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const firstCategory = 0;

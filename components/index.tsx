@@ -7,3 +7,7 @@ export * from './Card/Card';
 export * from './HHData/HHData';
 export * from './Advantages/Advantages';
 export * from './Sort/Sort';
+export * from './Input/Input';
+export * from './TextAria/TextAria';
+export * from './Search/Search';
+export * from './Product/Product';

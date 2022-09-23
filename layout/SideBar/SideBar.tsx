@@ -2,6 +2,7 @@ import cn from 'classnames';
 import {SideBarProps} from "./SideBar.props";
 import {Menu} from "../Menu/Menu";
 import styles from './SideBar.module.scss';
+import {Search} from "../../components";
 
 export const SideBar = ({className, ...props}: SideBarProps): JSX.Element => {
 
@@ -26,7 +27,9 @@ export const SideBar = ({className, ...props}: SideBarProps): JSX.Element => {
                     d="M27.5 16.6835L28.5103 19.2744H31.7798L29.1347 20.8758L30.145 23.4667L27.5 21.8654L24.855 23.4667L25.8653 20.8758L23.2202 19.2744H26.4897L27.5 16.6835Z"
                 />
             </svg>
-            <div>Поиск</div>
+            <div>
+                <Search/>
+            </div>
             <Menu/>
         </div>
     )
