@@ -13,6 +13,12 @@
     }
   }
 
+  .productTags {
+    .productTags__category {
+      margin-top: 5px;
+    }
+  }
+
   .productTitle, .productTags {
     grid-column: titlestart / middle;
   }
@@ -48,6 +54,10 @@
     }
   }
 
+  .productOldPrice {
+    margin-left: 4px;
+  }
+
   .productRating, .rateTitle {
     grid-column: ratestart / end;
   }
@@ -62,10 +72,37 @@
 
   .productDescription {
     grid-column: start / end;
+    margin-bottom: 15px;
   }
 
   .productFeature {
     grid-column: start / middle;
+
+    .productFeature__characteristics {
+      display: grid;
+      grid-template-columns:auto 1fr auto;
+      padding-right: 60px;
+      gap: 10px;
+
+      .productFeature__characteristicsName {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 32px;
+        color: var(--black);
+      }
+
+      .productFeature__characteristicsDots {
+        border-bottom: 1px dashed var(--grey-light);
+        margin-bottom: 5px;
+      }
+
+      .productFeature__characteristicsValue {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        color: var(--black);
+      }
+    }
   }
 
   .productAdvantagesBlock {
@@ -74,6 +111,10 @@
 
   .productActions {
     grid-column: start / end;
+
+    .productActionsButton {
+      margin-left: 20px;
+    }
   }
 
   .productPriceTitle, .productCreditTitle, .productRateTitle {
@@ -82,4 +123,27 @@
     line-height: 19px;
   }
 
+  .productAdvantagesBlockAdv {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 20px;
+    border-left: 2px solid var(--green);
+    padding-left: 15px;
+  }
+
+  .productAdvantagesBlockDis {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 20px;
+    border-left: 2px solid var(--red);
+    padding-left: 15px;
+  }
+
+  .productAdvantagesBlockAdv__title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--black);
+    margin-bottom: 5px;
+  }
 }

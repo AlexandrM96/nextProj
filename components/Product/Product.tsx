@@ -1,11 +1,13 @@
 import cn from 'classnames';
 import {ProductProps} from "./Product.props";
-import styles from './Product.module.scss';
 import {Card} from "../Card/Card";
 import {Rating} from "../Rating/Rating";
 import {Tag} from "../Tag/Tag";
 import {Button} from "../Button/Button";
-import {priceRu} from "../../helpers/helpers";
+import {devOfNum, priceRu} from "../../helpers/helpers";
+import {Divider} from "../Divider/Divider";
+import Image from 'next/image';
+import styles from './Product.module.scss';
 
 export const Product = ({product, className, ...props}: ProductProps): JSX.Element => {
 
@@ -13,7 +15,11 @@ export const Product = ({product, className, ...props}: ProductProps): JSX.Eleme
         <Card>
             <div className={styles.product}>
                 <div className={styles.productLogo}>
-                    <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title}/>
+                    <Image
+                        src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title}
+                        width={70}
+                        height={70}
+                    />
                 </div>
                 <div className={styles.productTitle}>
                     {product.title}
@@ -39,7 +45,7 @@ export const Product = ({product, className, ...props}: ProductProps): JSX.Eleme
                 <div className={styles.productTags}>
                     {product.categories.map(item =>
                         <Tag size={"div-medium"} color={'ghost'}>
-                            item
+                            {item}
                         </Tag>)}
                 </div>
                 <div className={styles.productPriceTitle}>
@@ -49,39 +55,55 @@ export const Product = ({product, className, ...props}: ProductProps): JSX.Eleme
                     кредит
                 </div>
                 <div className={styles.productRateTitle}>
-                    {product.reviewCount} отзывов
+                    {product.reviewCount} {devOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов',])}
                 </div>
                 <div className={styles.productHr}>
-                    <hr/>
+                    <Divider/>
                 </div>
                 <div className={styles.productDescription}>
                     {product.descriptions}
                 </div>
                 <div className={styles.productFeature}>
-                    feach
+                    {product.characteristics.map(item => (
+                            <div className={styles.productFeature__characteristics} key={item.name}>
+                                <span className={styles.productFeature__characteristicsName}>
+                                    {item.name}
+                                </span>
+                                <span className={styles.productFeature__characteristicsDots}></span>
+                                <span className={styles.productFeature__characteristicsValue}>
+                                    {item.value}
+                                </span>
+                            </div>
+                        )
+                    )}
                 </div>
                 <div className={styles.productAdvantagesBlock}>
-                    <div className={styles.productAdvantagesBlockAdv}>
-                        <div>
-                            Преимущества
+                    {
+                        product.advantages && <div className={styles.productAdvantagesBlockAdv}>
+                            <div className={styles.productAdvantagesBlockAdv__title}>
+                                Преимущества
+                            </div>
+                            <div>{product.advantages}</div>
                         </div>
-                        <div>{product.advantages}</div>
-                    </div>
-                    <div className={styles.productAdvantagesBlockDis}>
-                        <div>
-                            Недостатки
+                    }
+                    {
+                        product.disadvantages && <div className={styles.productAdvantagesBlockDis}>
+                            <div className={styles.productAdvantagesBlockAdv__title}>
+                                Недостатки
+                            </div>
+                            <div>
+                                {product.disadvantages}
+                            </div>
                         </div>
-                        <div>
-                            {product.disadvantages}
-                        </div>
-                    </div>
+                    }
                 </div>
                 <div className={styles.productHr}>
-                    <hr/>
+                    <Divider/>
                 </div>
                 <div className={styles.productActions}>
                     <Button appearance={'primary'}>Узнать подробнее</Button>
-                    <Button appearance={'ghost'} arrow={'right'}>Читать отзывы</Button>
+                    <Button appearance={'ghost'} arrow={'right'} className={styles.productActionsButton}>Читать
+                        отзывы</Button>
                 </div>
             </div>
         </Card>

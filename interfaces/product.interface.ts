@@ -22,8 +22,8 @@ export interface ProductModel {
     category: string;
     createdAt: Date;
     updatedAt: Date;
-    advantages: string;
-    disadvantages: string;
+    advantages?: string;
+    disadvantages?: string;
     reviewAvg?: number;
     reviewCount: number;
     reviews: ReviewModel[];
